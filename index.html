@@ -8,16 +8,24 @@
 </head>
 <body>
 
-    <audio id="bgMusic" src="u_mr84lzw2xf-eid-mubarak-201252.mp3" loop></audio>
+    <audio id="bgMusic" src="eid_song.mp3" loop muted></audio>
+
+    <div class="welcome-overlay" id="welcomeOverlay" onclick="startExperience()">
+        <div class="welcome-box">
+            <h2>🕌 Eid ul Adha Mubarak!</h2>
+            <p>Tap below to start the music and reveal interactive animals!</p>
+            <button class="start-btn">Open Card ✨</button>
+        </div>
+    </div>
 
     <div class="eid-card" id="mainCard">
-        <div class="speech-bubble" id="speechBubble">Click anywhere to start & click animals to listen!</div>
+        <div class="speech-bubble" id="speechBubble">Tap animals to hear their voice!</div>
 
         <div class="animal-sheep" id="sheep" onclick="interact('sheep', event)"></div>
         <div class="animal-camel" id="camel" onclick="interact('camel', event)"></div>
         <div class="animal-cow" id="cow" onclick="interact('cow', event)"></div>
 
-        <div class="instruction">Click anywhere for Music! Click animals for Voice! 🐐 🐪 🐄</div>
+        <div class="instruction">Tap animals for Voice! 🐐 🐪 🐄</div>
     </div>
 
     <script src="script.js"></script>
