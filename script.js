@@ -2,7 +2,7 @@
 const animalData = {
     sheep: {
         text: "🐐 Sheep: Baa Baa! Eid Mubarak! Have a blessed Eid.",
-        audioFile: "sheep.mp3" // Plays your custom sheep audio
+        audioFile: "ID3" // Plays your custom sheep audio
     },
     camel: {
         text: "🐪 Camel: Eid Mubarak! Warm wishes from the desert camel!",
