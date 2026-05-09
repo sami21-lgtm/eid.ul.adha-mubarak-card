@@ -5,49 +5,52 @@
 }
 
 body {
-    background-color: #121212;
+    background-color: #0d0d0d;
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     overflow: hidden;
+    padding: 10px;
 }
 
-/* Main Card Container */
+/* Main Card Container (Responsive 16:9 ratio for both mobile and PC) */
 .eid-card {
     position: relative;
-    width: 90%;
+    width: 100%;
     max-width: 800px;
-    aspect-ratio: 16/9;
-    background-image: url('eid mubarak pic.png'); /* Loads your image as background */
-    background-size: cover;
+    aspect-ratio: 16/9; /* Keeps perfect aspect ratio on all screen sizes */
+    background-image: url('image_bcd216.png'); /* Your uploaded picture */
+    background-size: 100% 100%; /* Stretches and fits perfectly without cropping */
     background-position: center;
-    border-radius: 15px;
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.8);
+    background-repeat: no-repeat;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
     border: 3px solid #d4af37;
     overflow: hidden;
 }
 
-/* Speech Bubble Styles */
+/* Speech Bubble styling */
 .speech-bubble {
     position: absolute;
-    top: 12%;
+    top: 8%;
     left: 50%;
     transform: translateX(-50%) scale(0.8);
     background: rgba(0, 0, 0, 0.85);
     color: #fff;
-    padding: 12px 25px;
-    border-radius: 30px;
-    border: 2px solid #d4af37;
-    font-size: 1.2rem;
+    padding: 8px 18px;
+    border-radius: 20px;
+    border: 1.5px solid #d4af37;
+    font-size: 0.95rem;
     font-weight: bold;
     text-align: center;
-    box-shadow: 0 5px 15px rgba(212, 175, 55, 0.4);
+    box-shadow: 0 4px 10px rgba(212, 175, 55, 0.3);
     opacity: 0;
     pointer-events: none;
     transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     z-index: 10;
+    white-space: nowrap;
 }
 
 .speech-bubble.show {
@@ -55,9 +58,9 @@ body {
     transform: translateX(-50%) scale(1);
 }
 
-/* --- Animal Hotspots (Positioned specifically over the animals in your image) --- */
+/* --- Responsive Animal Hotspots (Using percentage % to scale perfectly with screen size) --- */
 
-/* 1. Sheep (The white animal on the left) */
+/* 1. Sheep (White animal on the left) */
 .animal-sheep {
     position: absolute;
     bottom: 22%;
@@ -65,13 +68,14 @@ body {
     width: 14%;
     height: 42%;
     cursor: pointer;
-    border-radius: 40%;
+    border-radius: 30%;
     background: rgba(255, 0, 0, 0); /* Invisible */
     z-index: 5;
     transition: transform 0.2s;
+    -webkit-tap-highlight-color: transparent; /* Removes blue tap highlight on mobile */
 }
 
-/* 2. Camel (The yellow animal in the middle) */
+/* 2. Camel (Yellow animal in the middle) */
 .animal-camel {
     position: absolute;
     bottom: 22%;
@@ -79,13 +83,14 @@ body {
     width: 18%;
     height: 55%;
     cursor: pointer;
-    border-radius: 40%;
+    border-radius: 30%;
     background: rgba(0, 255, 0, 0); /* Invisible */
     z-index: 4;
     transition: transform 0.2s;
+    -webkit-tap-highlight-color: transparent;
 }
 
-/* 3. Cow (The brown cow on the right) */
+/* 3. Cow (Brown animal on the right) */
 .animal-cow {
     position: absolute;
     bottom: 18%;
@@ -93,61 +98,78 @@ body {
     width: 18%;
     height: 45%;
     cursor: pointer;
-    border-radius: 40%;
+    border-radius: 30%;
     background: rgba(0, 0, 255, 0); /* Invisible */
     z-index: 5;
     transition: transform 0.2s;
+    -webkit-tap-highlight-color: transparent;
 }
 
-/* Hover Effect: Glow and slight scale up to hint interactivity */
+/* Hover & Active Effects */
 .animal-sheep:hover, .animal-camel:hover, .animal-cow:hover {
-    transform: scale(1.05);
-    box-shadow: inset 0 0 15px rgba(212, 175, 55, 0.5);
-    border-radius: 20px;
+    transform: scale(1.03);
+}
+
+.animal-sheep:active, .animal-camel:active, .animal-cow:active {
+    transform: scale(0.97);
 }
 
 /* --- Animations --- */
 
-/* Sheep jump animation */
+/* Sheep Jump Animation */
 @keyframes jump {
     0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-20px) scaleY(0.9); }
+    50% { transform: translateY(-10px); }
 }
 .jump-anim {
-    animation: jump 0.5s ease-in-out 2;
+    animation: jump 0.4s ease-in-out 2;
 }
 
-/* Camel swaying animation */
+/* Camel Sway Animation */
 @keyframes sway {
     0%, 100% { transform: rotate(0deg); }
-    50% { transform: rotate(5deg) scale(1.03); }
+    50% { transform: rotate(3deg); }
 }
 .sway-anim {
-    animation: sway 0.6s ease-in-out 2;
+    animation: sway 0.5s ease-in-out 2;
 }
 
-/* Cow head shake animation */
+/* Cow Head Shake Animation */
 @keyframes shakeHead {
-    0%, 100% { transform: translateX(0) rotate(0deg); }
-    25% { transform: translateX(-5px) rotate(-3deg); }
-    75% { transform: translateX(5px) rotate(3deg); }
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-3px); }
+    75% { transform: translateX(3px); }
 }
 .shake-anim {
-    animation: shakeHead 0.4s ease-in-out 3;
+    animation: shakeHead 0.3s ease-in-out 3;
 }
 
-/* Instruction Text Bar */
+/* Bottom Instruction Text */
 .instruction {
     position: absolute;
-    bottom: 8px;
+    bottom: 5px;
     left: 50%;
     transform: translateX(-50%);
     color: #d4af37;
-    font-size: 0.85rem;
-    background: rgba(0,0,0,0.7);
-    padding: 4px 15px;
-    border-radius: 15px;
-    letter-spacing: 1px;
+    font-size: 0.75rem;
+    background: rgba(0, 0, 0, 0.8);
+    padding: 3px 12px;
+    border-radius: 10px;
     pointer-events: none;
     text-align: center;
+    width: 90%;
+    max-width: max-content;
+}
+
+/* Adjust font size and layout for larger screens (PC/Tablets) */
+@media (min-width: 600px) {
+    .speech-bubble {
+        font-size: 1.2rem;
+        padding: 12px 25px;
+        border-radius: 30px;
+    }
+    .instruction {
+        font-size: 0.85rem;
+        padding: 4px 15px;
+    }
 }
