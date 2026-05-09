@@ -10,7 +10,7 @@ const animalData = {
     },
     cow: {
         text: "🐄 Cow: Moo Moo! Eid Mubarak! May your sacrifices be accepted.",
-        audioFile: "cow.mp3" // Plays your custom cow audio
+        audioFile: "cvoice_preview_cow.mp3.mp3" // Plays your custom cow audio
     }
 };
 
