@@ -1,0 +1,153 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #121212;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    overflow: hidden;
+}
+
+/* Main Card Container */
+.eid-card {
+    position: relative;
+    width: 90%;
+    max-width: 800px;
+    aspect-ratio: 16/9;
+    background-image: url('image_bcd216.png'); /* Loads your image as background */
+    background-size: cover;
+    background-position: center;
+    border-radius: 15px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.8);
+    border: 3px solid #d4af37;
+    overflow: hidden;
+}
+
+/* Speech Bubble Styles */
+.speech-bubble {
+    position: absolute;
+    top: 12%;
+    left: 50%;
+    transform: translateX(-50%) scale(0.8);
+    background: rgba(0, 0, 0, 0.85);
+    color: #fff;
+    padding: 12px 25px;
+    border-radius: 30px;
+    border: 2px solid #d4af37;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(212, 175, 55, 0.4);
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    z-index: 10;
+}
+
+.speech-bubble.show {
+    opacity: 1;
+    transform: translateX(-50%) scale(1);
+}
+
+/* --- Animal Hotspots (Positioned specifically over the animals in your image) --- */
+
+/* 1. Sheep (The white animal on the left) */
+.animal-sheep {
+    position: absolute;
+    bottom: 22%;
+    right: 28%;
+    width: 14%;
+    height: 42%;
+    cursor: pointer;
+    border-radius: 40%;
+    background: rgba(255, 0, 0, 0); /* Invisible */
+    z-index: 5;
+    transition: transform 0.2s;
+}
+
+/* 2. Camel (The yellow animal in the middle) */
+.animal-camel {
+    position: absolute;
+    bottom: 22%;
+    right: 15%;
+    width: 18%;
+    height: 55%;
+    cursor: pointer;
+    border-radius: 40%;
+    background: rgba(0, 255, 0, 0); /* Invisible */
+    z-index: 4;
+    transition: transform 0.2s;
+}
+
+/* 3. Cow (The brown cow on the right) */
+.animal-cow {
+    position: absolute;
+    bottom: 18%;
+    right: 3%;
+    width: 18%;
+    height: 45%;
+    cursor: pointer;
+    border-radius: 40%;
+    background: rgba(0, 0, 255, 0); /* Invisible */
+    z-index: 5;
+    transition: transform 0.2s;
+}
+
+/* Hover Effect: Glow and slight scale up to hint interactivity */
+.animal-sheep:hover, .animal-camel:hover, .animal-cow:hover {
+    transform: scale(1.05);
+    box-shadow: inset 0 0 15px rgba(212, 175, 55, 0.5);
+    border-radius: 20px;
+}
+
+/* --- Animations --- */
+
+/* Sheep jump animation */
+@keyframes jump {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px) scaleY(0.9); }
+}
+.jump-anim {
+    animation: jump 0.5s ease-in-out 2;
+}
+
+/* Camel swaying animation */
+@keyframes sway {
+    0%, 100% { transform: rotate(0deg); }
+    50% { transform: rotate(5deg) scale(1.03); }
+}
+.sway-anim {
+    animation: sway 0.6s ease-in-out 2;
+}
+
+/* Cow head shake animation */
+@keyframes shakeHead {
+    0%, 100% { transform: translateX(0) rotate(0deg); }
+    25% { transform: translateX(-5px) rotate(-3deg); }
+    75% { transform: translateX(5px) rotate(3deg); }
+}
+.shake-anim {
+    animation: shakeHead 0.4s ease-in-out 3;
+}
+
+/* Instruction Text Bar */
+.instruction {
+    position: absolute;
+    bottom: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #d4af37;
+    font-size: 0.85rem;
+    background: rgba(0,0,0,0.7);
+    padding: 4px 15px;
+    border-radius: 15px;
+    letter-spacing: 1px;
+    pointer-events: none;
+    text-align: center;
+}
