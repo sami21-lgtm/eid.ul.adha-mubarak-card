@@ -15,20 +15,83 @@ body {
     padding: 10px;
 }
 
-/* Main Card Container (Responsive 16:9 ratio for both mobile and PC) */
+/* Welcome overlay to bypass browser blocks */
+.welcome-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(13, 13, 13, 0.95);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+    transition: opacity 0.5s ease;
+}
+
+.welcome-box {
+    text-align: center;
+    color: #fff;
+    padding: 30px;
+    border-radius: 15px;
+    border: 2px solid #d4af37;
+    background: rgba(20, 20, 20, 0.9);
+    box-shadow: 0 10px 30px rgba(212, 175, 55, 0.2);
+}
+
+.welcome-box h2 {
+    color: #d4af37;
+    margin-bottom: 15px;
+    font-size: 1.8rem;
+}
+
+.welcome-box p {
+    margin-bottom: 25px;
+    font-size: 1rem;
+    color: #ccc;
+}
+
+.start-btn {
+    background: #d4af37;
+    color: #000;
+    padding: 10px 30px;
+    border: none;
+    font-weight: bold;
+    font-size: 1.1rem;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: transform 0.2s, background 0.2s;
+}
+
+.start-btn:hover {
+    transform: scale(1.05);
+    background: #f1c40f;
+}
+
+/* Main Card Container */
 .eid-card {
     position: relative;
     width: 100%;
     max-width: 800px;
-    aspect-ratio: 16/9; /* Keeps perfect aspect ratio on all screen sizes */
-    background-image: url('eid mubarak pic.png'); /* Your uploaded picture */
-    background-size: 100% 100%; /* Stretches and fits perfectly without cropping */
+    aspect-ratio: 16/9;
+    background-image: url('image_bcd216.png'); /* Backgound image */
+    background-size: 100% 100%;
     background-position: center;
     background-repeat: no-repeat;
     border-radius: 12px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
     border: 3px solid #d4af37;
     overflow: hidden;
+    opacity: 0; /* Initially hidden */
+    transform: scale(0.9);
+    transition: all 0.8s ease-in-out;
+}
+
+/* Reveal card and animals when welcome button is clicked */
+.eid-card.reveal {
+    opacity: 1;
+    transform: scale(1);
 }
 
 /* Speech Bubble styling */
@@ -58,9 +121,7 @@ body {
     transform: translateX(-50%) scale(1);
 }
 
-/* --- Responsive Animal Hotspots (Using percentage % to scale perfectly with screen size) --- */
-
-/* 1. Sheep (White animal on the left) */
+/* --- Animal Hotspots (Using % for fluid layout across PC & Mobile) --- */
 .animal-sheep {
     position: absolute;
     bottom: 22%;
@@ -69,13 +130,12 @@ body {
     height: 42%;
     cursor: pointer;
     border-radius: 30%;
-    background: rgba(255, 0, 0, 0); /* Invisible */
+    background: rgba(255, 0, 0, 0); 
     z-index: 5;
     transition: transform 0.2s;
-    -webkit-tap-highlight-color: transparent; /* Removes blue tap highlight on mobile */
+    -webkit-tap-highlight-color: transparent;
 }
 
-/* 2. Camel (Yellow animal in the middle) */
 .animal-camel {
     position: absolute;
     bottom: 22%;
@@ -84,13 +144,12 @@ body {
     height: 55%;
     cursor: pointer;
     border-radius: 30%;
-    background: rgba(0, 255, 0, 0); /* Invisible */
+    background: rgba(0, 255, 0, 0);
     z-index: 4;
     transition: transform 0.2s;
     -webkit-tap-highlight-color: transparent;
 }
 
-/* 3. Cow (Brown animal on the right) */
 .animal-cow {
     position: absolute;
     bottom: 18%;
@@ -99,24 +158,17 @@ body {
     height: 45%;
     cursor: pointer;
     border-radius: 30%;
-    background: rgba(0, 0, 255, 0); /* Invisible */
+    background: rgba(0, 0, 255, 0);
     z-index: 5;
     transition: transform 0.2s;
     -webkit-tap-highlight-color: transparent;
 }
 
-/* Hover & Active Effects */
 .animal-sheep:hover, .animal-camel:hover, .animal-cow:hover {
     transform: scale(1.03);
 }
 
-.animal-sheep:active, .animal-camel:active, .animal-cow:active {
-    transform: scale(0.97);
-}
-
-/* --- Animations --- */
-
-/* Sheep Jump Animation */
+/* --- Interactive Animations --- */
 @keyframes jump {
     0%, 100% { transform: translateY(0); }
     50% { transform: translateY(-10px); }
@@ -125,7 +177,6 @@ body {
     animation: jump 0.4s ease-in-out 2;
 }
 
-/* Camel Sway Animation */
 @keyframes sway {
     0%, 100% { transform: rotate(0deg); }
     50% { transform: rotate(3deg); }
@@ -134,7 +185,6 @@ body {
     animation: sway 0.5s ease-in-out 2;
 }
 
-/* Cow Head Shake Animation */
 @keyframes shakeHead {
     0%, 100% { transform: translateX(0); }
     25% { transform: translateX(-3px); }
@@ -144,7 +194,7 @@ body {
     animation: shakeHead 0.3s ease-in-out 3;
 }
 
-/* Bottom Instruction Text */
+/* Instruction footer */
 .instruction {
     position: absolute;
     bottom: 5px;
@@ -161,7 +211,6 @@ body {
     max-width: max-content;
 }
 
-/* Adjust font size and layout for larger screens (PC/Tablets) */
 @media (min-width: 600px) {
     .speech-bubble {
         font-size: 1.2rem;
