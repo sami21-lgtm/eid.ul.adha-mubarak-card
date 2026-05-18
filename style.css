@@ -15,7 +15,6 @@ body {
     padding: 10px;
 }
 
-/* Welcome overlay */
 .welcome-overlay {
     position: fixed;
     top: 0;
@@ -69,13 +68,12 @@ body {
     background: #f1c40f;
 }
 
-/* Main Card Container */
 .eid-card {
     position: relative;
     width: 100%;
     max-width: 800px;
     aspect-ratio: 16/9;
-    background-image: url('eid mubarak pic.png'); /* স্পেস ছাড়া সঠিক নাম এখানে সেট করা হয়েছে */
+    background-image: url('eid mubarak pic.png'); 
     background-size: 100% 100%;
     background-position: center;
     background-repeat: no-repeat;
@@ -93,7 +91,6 @@ body {
     transform: scale(1);
 }
 
-/* Speech Bubble styling */
 .speech-bubble {
     position: absolute;
     top: 8%;
@@ -120,11 +117,10 @@ body {
     transform: translateX(-50%) scale(1);
 }
 
-/* --- Base Hotspot Style --- */
 .animal-hotspot {
     position: absolute;
     cursor: pointer;
-    background: rgba(255, 0, 0, 0); /* অদৃশ্য বাটন */
+    background: rgba(255, 0, 0, 0); 
     -webkit-tap-highlight-color: transparent;
     transition: transform 0.2s;
 }
@@ -133,7 +129,7 @@ body {
     transform: scale(1.03);
 }
 
-/* --- LEFT SIDE POSITIONING --- */
+/* LEFT SIDE */
 .camel-left {
     bottom: 14%;
     left: 0%;
@@ -156,7 +152,7 @@ body {
     z-index: 5;
 }
 
-/* --- RIGHT SIDE POSITIONING --- */
+/* RIGHT SIDE */
 .camel-right {
     bottom: 14%;
     right: 0%;
@@ -179,33 +175,25 @@ body {
     z-index: 5;
 }
 
-/* --- Animations --- */
 @keyframes jump {
     0%, 100% { transform: translateY(0); }
     50% { transform: translateY(-12px); }
 }
-.jump-anim {
-    animation: jump 0.4s ease-in-out 2;
-}
+.jump-anim { animation: jump 0.4s ease-in-out 2; }
 
 @keyframes sway {
     0%, 100% { transform: rotate(0deg); }
     50% { transform: rotate(3deg); }
 }
-.sway-anim {
-    animation: sway 0.5s ease-in-out 2;
-}
+.sway-anim { animation: sway 0.5s ease-in-out 2; }
 
 @keyframes shakeHead {
     0%, 100% { transform: translateX(0); }
     25% { transform: translateX(-4px); }
     75% { transform: translateX(4px); }
 }
-.shake-anim {
-    animation: shakeHead 0.3s ease-in-out 3;
-}
+.shake-anim { animation: shakeHead 0.3s ease-in-out 3; }
 
-/* Footer text */
 .instruction {
     position: absolute;
     bottom: 5px;
@@ -224,13 +212,6 @@ body {
 }
 
 @media (min-width: 600px) {
-    .speech-bubble {
-        font-size: 1.2rem;
-        padding: 12px 25px;
-        border-radius: 30px;
-    }
-    .instruction {
-        font-size: 0.85rem;
-        padding: 4px 15px;
-    }
+    .speech-bubble { font-size: 1.2rem; padding: 12px 25px; border-radius: 30px; }
+    .instruction { font-size: 0.85rem; padding: 4px 15px; }
 }
