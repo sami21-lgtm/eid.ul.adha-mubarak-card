@@ -1,16 +1,16 @@
-// Animal Config Data
+// Animal Config Data (Fixed the double .mp3.mp3 extension issue)
 const animalData = {
     sheep: {
         text: "🐐 Sheep: Baa Baa! Eid Mubarak! Have a blessed Eid.",
-        audioFile: "voice_preview_sheep.mp3.mp3"
+        audioFile: "voice_preview_sheep.mp3" // এক্সটেনশন ঠিক করা হয়েছে
     },
     camel: {
         text: "🐪 Camel: Eid Mubarak! Warm wishes from the desert camel!",
-        audioFile: "voice_preview_camel.mp3.mp3"
+        audioFile: "voice_preview_camel.mp3" // এক্সটেনশন ঠিক করা হয়েছে
     },
     cow: {
         text: "🐄 Cow: Moo Moo! Eid Mubarak! May your sacrifices be accepted.",
-        audioFile: "voice_preview_cow.mp3.mp3"
+        audioFile: "voice_preview_cow.mp3" // এক্সটেনশন ঠিক করা হয়েছে
     }
 };
 
@@ -39,11 +39,15 @@ function startExperience() {
     });
 }
 
-function interact(animalType, event) {
+// Updated interact function to accept specific animal element classes (Left vs Right)
+function interact(animalType, elementClass, event) {
     event.stopPropagation(); // Stop overlay triggers
 
     const bubble = document.getElementById('speechBubble');
-    const element = document.getElementById(animalType);
+    // document.getElementById এর জায়গায় ক্লাস সিলেকশন করা হয়েছে যাতে দুই পাশের পশুই কাজ করে
+    const element = document.querySelector('.' + elementClass);
+
+    if (!element) return; // সিকিউরিটি চেক, এলিমেন্ট না থাকলে কোড ব্রেক করবে না
 
     // Reset and restart CSS animations
     element.classList.remove('jump-anim', 'sway-anim', 'shake-anim');
