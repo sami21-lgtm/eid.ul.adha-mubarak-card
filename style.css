@@ -15,7 +15,7 @@ body {
     padding: 10px;
 }
 
-/* Welcome overlay to bypass browser blocks */
+/* Welcome overlay */
 .welcome-overlay {
     position: fixed;
     top: 0;
@@ -75,7 +75,7 @@ body {
     width: 100%;
     max-width: 800px;
     aspect-ratio: 16/9;
-    background-image: url('eid mubarak pic.png'); /* Backgound image */
+    background-image: url('image_bcd216.png'); /* আপনার ছবির নাম এখানে বসাবেন */
     background-size: 100% 100%;
     background-position: center;
     background-repeat: no-repeat;
@@ -83,12 +83,11 @@ body {
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
     border: 3px solid #d4af37;
     overflow: hidden;
-    opacity: 0; /* Initially hidden */
+    opacity: 0;
     transform: scale(0.9);
     transition: all 0.8s ease-in-out;
 }
 
-/* Reveal card and animals when welcome button is clicked */
 .eid-card.reveal {
     opacity: 1;
     transform: scale(1);
@@ -121,57 +120,69 @@ body {
     transform: translateX(-50%) scale(1);
 }
 
-/* --- Animal Hotspots (Using % for fluid layout across PC & Mobile) --- */
-.animal-sheep {
+/* --- Base Hotspot Style --- */
+.animal-hotspot {
     position: absolute;
-    bottom: 22%;
-    right: 28%;
-    width: 14%;
-    height: 42%;
     cursor: pointer;
-    border-radius: 30%;
-    background: rgba(255, 0, 0, 0); 
-    z-index: 5;
-    transition: transform 0.2s;
+    background: rgba(255, 0, 0, 0); /* অদৃশ্য বাটন */
     -webkit-tap-highlight-color: transparent;
+    transition: transform 0.2s;
 }
 
-.animal-camel {
-    position: absolute;
-    bottom: 22%;
-    right: 15%;
-    width: 18%;
-    height: 55%;
-    cursor: pointer;
-    border-radius: 30%;
-    background: rgba(0, 255, 0, 0);
-    z-index: 4;
-    transition: transform 0.2s;
-    -webkit-tap-highlight-color: transparent;
-}
-
-.animal-cow {
-    position: absolute;
-    bottom: 18%;
-    right: 3%;
-    width: 18%;
-    height: 45%;
-    cursor: pointer;
-    border-radius: 30%;
-    background: rgba(0, 0, 255, 0);
-    z-index: 5;
-    transition: transform 0.2s;
-    -webkit-tap-highlight-color: transparent;
-}
-
-.animal-sheep:hover, .animal-camel:hover, .animal-cow:hover {
+.animal-hotspot:hover {
     transform: scale(1.03);
 }
 
-/* --- Interactive Animations --- */
+/* --- LEFT SIDE POSITIONING --- */
+.camel-left {
+    bottom: 14%;
+    left: 0%;
+    width: 14%;
+    height: 52%;
+    border-radius: 40% 40% 0 0;
+}
+.cow-left {
+    bottom: 16%;
+    left: 11%;
+    width: 15%;
+    height: 38%;
+    z-index: 4;
+}
+.sheep-left {
+    bottom: 14%;
+    left: 1%;
+    width: 12%;
+    height: 32%;
+    z-index: 5;
+}
+
+/* --- RIGHT SIDE POSITIONING --- */
+.camel-right {
+    bottom: 14%;
+    right: 0%;
+    width: 14%;
+    height: 52%;
+    border-radius: 40% 40% 0 0;
+}
+.cow-right {
+    bottom: 16%;
+    right: 11%;
+    width: 15%;
+    height: 38%;
+    z-index: 4;
+}
+.sheep-right {
+    bottom: 14%;
+    right: 1%;
+    width: 12%;
+    height: 32%;
+    z-index: 5;
+}
+
+/* --- Animations --- */
 @keyframes jump {
     0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
+    50% { transform: translateY(-12px); }
 }
 .jump-anim {
     animation: jump 0.4s ease-in-out 2;
@@ -187,14 +198,14 @@ body {
 
 @keyframes shakeHead {
     0%, 100% { transform: translateX(0); }
-    25% { transform: translateX(-3px); }
-    75% { transform: translateX(3px); }
+    25% { transform: translateX(-4px); }
+    75% { transform: translateX(4px); }
 }
 .shake-anim {
     animation: shakeHead 0.3s ease-in-out 3;
 }
 
-/* Instruction footer */
+/* Footer text */
 .instruction {
     position: absolute;
     bottom: 5px;
@@ -209,6 +220,7 @@ body {
     text-align: center;
     width: 90%;
     max-width: max-content;
+    z-index: 20;
 }
 
 @media (min-width: 600px) {
