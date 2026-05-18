@@ -6,7 +6,7 @@ const animalData = {
     },
     camel: {
         text: "🐪 Camel: Eid Mubarak! Warm wishes from the desert camel!",
-        audioFile: "voice_preview_camel.mp3" // এক্সটেনশন ঠিক করা হয়েছে
+        audioFile: "voice_preview_camel.mp3.mp3" // এক্সটেনশন ঠিক করা হয়েছে
     },
     cow: {
         text: "🐄 Cow: Moo Moo! Eid Mubarak! May your sacrifices be accepted.",
