@@ -1,15 +1,16 @@
+
 const animalData = {
     sheep: {
         text: "🐐 Sheep: Baa Baa! Eid Mubarak! Have a blessed Eid.",
-        audioFile: "voice_preview_sheep.mp3.mp3" 
+        audioFile: "voice_preview_sheep.mp3.mp3"
     },
     camel: {
         text: "🐪 Camel: Eid Mubarak! Warm wishes from the desert camel!",
-        audioFile: "voice_preview_camel.mp3.mp3"
+        audioFile: "voice_preview_camel.mp3.mp3" 
     },
     cow: {
         text: "🐄 Cow: Moo Moo! Eid Mubarak! May your sacrifices be accepted.",
-        audioFile: "voice_preview_cow.mp3.mp3" 
+        audioFile: "voice_preview_cow.mp3.mp3"
     }
 };
 
@@ -59,10 +60,13 @@ function interact(animalType, elementClass, event) {
 
     bgMusic.volume = 0.08;
 
+    // সরাসরি গিটহাবের ফাইল পাথ লোড করা হচ্ছে
     currentAnimalAudio = new Audio(animalData[animalType].audioFile);
     currentAnimalAudio.volume = 1.0;
     
-    currentAnimalAudio.play().catch(error => { console.log("Audio blocked: ", error); });
+    currentAnimalAudio.play().catch(error => { 
+        console.log("Audio play blocked or failed: ", error); 
+    });
 
     currentAnimalAudio.onended = () => { bgMusic.volume = 0.3; };
 
