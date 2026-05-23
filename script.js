@@ -1,19 +1,17 @@
-
+// Animal Config Data (লিখা বাদ দেওয়া হয়েছে এবং সিনট্যাক্স ফিক্স করা হয়েছে)
 const animalData = {
     sheep: {
-        text:🐐 
         audioFile: "voice_preview_sheep.mp3.mp3"
     },
-   camel: {
-        text: "🐪 ",
+    camel: {
         audioFile: "voice_preview_camel.mp3.mp3"
+    },
     cow: {
-        text: 🐄 
         audioFile: "voice_preview_cow.mp3.mp3"
     }
 };
 
-let activeTimeout;
+let activeTimeout; // টেক্সট না থাকলেও এটি গ্লোবাল ভ্যারিয়েবল হিসেবে রাখা হলো সেফটির জন্য
 let currentAnimalAudio = null;
 const bgMusic = document.getElementById('bgMusic');
 
@@ -33,11 +31,11 @@ function startExperience() {
 function interact(animalType, elementClass, event) {
     event.stopPropagation();
 
-    const bubble = document.getElementById('speechBubble');
     const element = document.querySelector('.' + elementClass);
 
     if (!element) return;
 
+    // এনিমেশন রিসেট এবং স্টার্ট
     element.classList.remove('jump-anim', 'sway-anim', 'shake-anim');
     void element.offsetWidth; 
 
@@ -49,17 +47,16 @@ function interact(animalType, elementClass, event) {
         element.classList.add('shake-anim');
     }
 
-    bubble.innerHTML = animalData[animalType].text;
-    bubble.classList.add('show');
-
+    // আগের কোনো পশুর সাউন্ড চলতে থাকলে তা বন্ধ করা
     if (currentAnimalAudio) {
         currentAnimalAudio.pause();
         currentAnimalAudio.currentTime = 0;
     }
 
+    // ব্যাকগ্রাউন্ড মিউজিক হালকা কমিয়ে ৮% করা (Ducking)
     bgMusic.volume = 0.08;
 
-    // সরাসরি গিটহাবের ফাইল পাথ লোড করা হচ্ছে
+    // গিটহাবের .mp3.mp3 পাথ অনুযায়ী অডিও লোড ও প্লে
     currentAnimalAudio = new Audio(animalData[animalType].audioFile);
     currentAnimalAudio.volume = 1.0;
     
@@ -67,8 +64,8 @@ function interact(animalType, elementClass, event) {
         console.log("Audio play blocked or failed: ", error); 
     });
 
-    currentAnimalAudio.onended = () => { bgMusic.volume = 0.3; };
-
-    clearTimeout(activeTimeout);
-    activeTimeout = setTimeout(() => { bubble.classList.remove('show'); }, 5000);
+    // পশুর ডাক শেষ হলে ব্যাকগ্রাউন্ড মিউজিক আবার ৩০% ভলিউমে ফিরে যাবে
+    currentAnimalAudio.onended = () => { 
+        bgMusic.volume = 0.3; 
+    };
 }
